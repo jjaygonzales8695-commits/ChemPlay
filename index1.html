@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemPlay Card Game</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+
+<script>
+let min=3;
+let sec=1;
+let timerInterval;
+let answer = 0;
+let answer2 = 0;
+let answer3 = 0;
+let score = 0;
+let numY = 0;
+let attempts = 0;
+const options = ["Potassium Chloride", "Sodium Fluoride", "Magnesium Sulfate", "Calcium Carbonate", "Magnesium Chloride", "Magnesium Oxide", "Sodium Chloride", "Iron(II) Chloride", "Ammonium Nitrate", "Sodium Sulfate", "Copper(II) Sulfate", "Dihydrogen Monoxide", "Carbon Dioxide", "Hydrogen Chloride", "Ammonia", "Methane", "Phosphorus trichloride", "Sulfur dioxide", "Acetone", "Benzene", "Ethene", "Formaldehyde", "Methanol"];
+var correctAnswer = "red";
+var correctAnswerTwo = "A";
+var d = new Date()
+var yr = d.getFullYear();
+var month = d.getMonth()+1
+
+if(month<10){
+month='0'+month
+}
+var date=d.getDate();
+if(date<10){
+date='0'+date
+}
+
+var c_date=yr+"-"+month+"-"+date;
+
+
+
+function startGame()
+{
+	nextQuestion();
+	document.getElementById("startBtn").disabled = true;
+	document.getElementById("angle1").disabled = false;
+	document.getElementById("angle2").disabled = false;
+	document.getElementById("angle3").disabled = false;
+	document.getElementById("angle4").disabled = false;
+	document.getElementById("angle5").disabled = false;
+	document.getElementById("angle6").disabled = false;
+	document.getElementById("angle7").disabled = false;
+	document.getElementById("angle8").disabled = false;
+	document.getElementById("angle9").disabled = false;
+	document.getElementById("angle10").disabled = false;
+	document.getElementById("angle11").disabled = false;
+	document.getElementById("angle12").disabled = false;
+	document.getElementById("angle13").disabled = false;
+	document.getElementById("angle15").disabled = false;
+	document.getElementById("angle16").disabled = false;
+	
+	let timeDisplay = document.getElementById("timeDisplay");
+	timerInterval = setInterval(function(){
+		sec -= 1;
+		if(sec < 10)
+		{timeDisplay.innerHTML = "Time Left: " + min + ":" + "0" + sec;}
+		else
+		{timeDisplay.innerHTML = "Time Left: " + min + ":" + sec;}
+		
+		if (min == 0 && sec == 0)
+		{ clearInterval(timerInterval);
+		  document.getElement
+		  document.getElementById("ppopup").style.display = "flex"
+		  document.getElementById("popscore").value = score;
+		  document.getElementById("popattempt").value = attempts;
+		  document.getElementById("popdate").value = c_date;
+		}
+
+		if (sec == 0)
+		{
+		 min -= 1;
+		 sec = 60;
+		}
+		
+		
+		},1000)
+}
+
+
+function nextQuestion(){
+let LH = document.getElementById("xmmmark");
+let numX = Math.ceil(Math.random() * 17);
+numY = numX;
+
+document.getElementById("xiiitem").style.boxShadow = "0 0 10px #aaaaaa";
+
+if (numX == 1){xmmmark.innerHTML = "Na"
+		LH.style.padding = "0px 34px"}
+else if (numX == 2){xmmmark.innerHTML = "K"
+		LH.style.padding = "0px 41px"}
+else if (numX == 3){xmmmark.innerHTML = "Mg"
+		LH.style.padding = "0px 32.5px"}
+else if (numX == 4){xmmmark.innerHTML = "Ca"
+		LH.style.padding = "0px 35px"}
+else if (numX == 5){xmmmark.innerHTML = "Fe"
+		LH.style.padding = "0px 36px"}
+else if (numX == 6){xmmmark.innerHTML = "NH<sub>4</sub>"
+		LH.style.padding = "0px 27px"}
+else if (numX == 7){xmmmark.innerHTML = "Cu"
+		LH.style.padding = "0px 35px"}
+else if (numX == 8){xmmmark.innerHTML = "H"
+		LH.style.padding = "0px 41px"}
+else if (numX == 9){xmmmark.innerHTML = "C"
+		LH.style.padding = "0px 41.5px"}
+else if (numX == 10){xmmmark.innerHTML = "N"
+		LH.style.padding = "0px 41px"}
+else if (numX == 11){xmmmark.innerHTML = "P"
+		LH.style.padding = "0px 41.5px"}
+else if (numX == 12){xmmmark.innerHTML = "S"
+		LH.style.padding = "0px 42px"}
+else if (numX == 13){xmmmark.innerHTML = "CH<sub>3</sub>"
+		LH.style.padding = "0px 27px"}
+else if (numX == 14){xmmmark.innerHTML = "H<sub>2</sub>"
+		LH.style.padding = "0px 34px"}
+else if (numX == 15){xmmmark.innerHTML = "Na<sub>2</sub>"
+		LH.style.padding = "0px 27px"}
+else if (numX == 16){xmmmark.innerHTML = "C<sub>3</sub>"
+		LH.style.padding = "0px 35px"}
+else if (numX == 17){xmmmark.innerHTML = "C<sub>6</sub>"
+		LH.style.padding = "0px 35px"}
+else if (numX == 18){xmmmark.innerHTML = "C<sub>2</sub>"
+		LH.style.padding = "0px 35px"}
+}
+
+function COneClick0(){document.getElementById("mmmark").innerHTML = "&nbsp;&nbsp;Cl&nbsp;&nbsp;"
+			answer = 1;
+			answer2 = 2;
+			answer3 = 8;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){
+					    score+=1;
+						document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Sodium Chloride";
+						document.getElementById("compound").innerHTML = "NaCl"
+						correctAnswerTwo = "A";
+						}
+						else if(answer2 == numY){
+						correctAnswer = "Potassium Chloride";
+						document.getElementById("compound").innerHTML = "KCl"
+						correctAnswerTwo = "A";
+						}
+						else if(answer3 == numY){
+						correctAnswer = "Hydrogen Chloride";
+						document.getElementById("compound").innerHTML = "HCl"
+						correctAnswerTwo = "B";						
+						}
+
+					    
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick30(){document.getElementById("mmmark").innerHTML = "&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;"
+			answer = 1;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						
+						if(answer == numY){
+						correctAnswer = "Sodium Fluoride";
+						document.getElementById("compound").innerHTML = "NaF"
+						correctAnswerTwo = "A";
+						}					
+						
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick45(){document.getElementById("mmmark").innerHTML = "SO<sub>4</sub>"
+			answer = 3;
+			answer2 = 15;
+			answer3 = 7;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Magnesium Sulfate";
+						document.getElementById("compound").innerHTML = "MgSO<sub>4</sub>"
+						correctAnswerTwo = "A";
+						}
+						else if(answer2 == numY){
+						correctAnswer = "Sodium Sulfate";
+						document.getElementById("compound").innerHTML = "Na<sub>2</sub>SO<sub>4</sub>"
+						correctAnswerTwo = "A";
+						}
+						else if(answer3 == numY){
+						correctAnswer = "Copper(II) Sulfate";
+						document.getElementById("compound").innerHTML = "CuSO<sub>4</sub>"
+						correctAnswerTwo = "A";						
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick60(){document.getElementById("mmmark").innerHTML = "CO<sub>3</sub>"
+			answer = 4;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Calcium Carbonate";
+						document.getElementById("compound").innerHTML = "CaCO<sub>3</sub>"
+						correctAnswerTwo = "A";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick90(){document.getElementById("mmmark").innerHTML = "&nbsp;Cl<sub>2</sub>&nbsp;"
+			answer = 3;
+			answer2 = 5;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Magnesium Chloride";
+						document.getElementById("compound").innerHTML = "MgCl<sub>2</sub>"
+						correctAnswerTwo = "A";
+						}
+						else if(answer2 == numY){
+						correctAnswer = "Iron(II) Chloride";
+						document.getElementById("compound").innerHTML = "FeCl<sub>2</sub>"
+						correctAnswerTwo = "A";
+						}
+
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick120(){document.getElementById("mmmark").innerHTML = "&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;"
+			answer = 3;
+			answer2 = 14;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Magnesium Oxide";
+						document.getElementById("compound").innerHTML = "MgO"
+						correctAnswerTwo = "A";
+						}
+						else if(answer2 == numY){
+						correctAnswer = "Dihydrogen Monoxide";
+						document.getElementById("compound").innerHTML = "H<sub>2</sub>O"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick135(){document.getElementById("mmmark").innerHTML = "NO<sub>3</sub>"
+			answer = 6;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Ammonium Nitrate";
+						document.getElementById("compound").innerHTML = "NH<sub>3</sub>NO<sub>4</sub>"
+						correctAnswerTwo = "A";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick150(){document.getElementById("mmmark").innerHTML = "&nbsp;O<sub>2</sub>&nbsp;"
+			answer = 9;
+			answer2 = 12;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					    document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Carbon Dioxide";
+						document.getElementById("compound").innerHTML = "CO<sub>2</sub>"
+						correctAnswerTwo = "B";
+						}
+						else if(answer2 == numY){
+						correctAnswer = "Sulfur Dioxide";
+						document.getElementById("compound").innerHTML = "SO<sub>2</sub>"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick180(){document.getElementById("mmmark").innerHTML = "&nbsp;H<sub>3</sub>&nbsp;"
+			answer = 10;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Ammonia";
+						document.getElementById("compound").innerHTML = "NH<sub>3</sub>"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick210(){document.getElementById("mmmark").innerHTML = "&nbsp;H<sub>4</sub>&nbsp;"
+			answer = 9;
+			answer2 = 18;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Methane";
+						document.getElementById("compound").innerHTML = "CH<sub>4</sub>"
+						correctAnswerTwo = "B";
+						}
+						else if(answer2 == numY){
+						correctAnswer = "Ethene";
+						document.getElementById("compound").innerHTML = "C<sub>2</sub>H<sub>4</sub>"
+						correctAnswerTwo = "B";
+						}
+
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick225(){document.getElementById("mmmark").innerHTML = "&nbsp;Cl<sub>3</sub>&nbsp;"
+			answer = 11;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Phosphorus Trichloride";
+						document.getElementById("compound").innerHTML = "PCl<sub>3</sub>"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick240(){document.getElementById("mmmark").innerHTML = "H<sub>6</sub>O"
+			answer = 16
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Acetone";
+						document.getElementById("compound").innerHTML = "C<sub>3</sub>H<sub>6</sub>O"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick270(){document.getElementById("mmmark").innerHTML = "&nbsp;H<sub>6</sub>&nbsp;"
+			answer = 17;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Benzene";
+						document.getElementById("compound").innerHTML = "C<sub>6</sub>H<sub>6</sub>"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+
+function COneClick315(){document.getElementById("mmmark").innerHTML = "H<sub>2</sub>O"
+			answer = 9;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Formaldehyde";
+						document.getElementById("compound").innerHTML = "CH<sub>2</sub>O"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+function COneClick330(){document.getElementById("mmmark").innerHTML = "&nbsp;OH&nbsp;"
+			answer = 13;
+			answer2 = 0;
+			answer3 = 0;
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (answer == numY || answer2 == numY || answer3 == numY){ score+=1;
+					     document.getElementById("SScore").innerHTML = "Score: " + score;
+						if(answer == numY){
+						correctAnswer = "Methanol";
+						document.getElementById("compound").innerHTML = "CH<sub>3</sub>OH"
+						correctAnswerTwo = "B";
+						}
+
+						document.getElementById('overlay').classList.add('show');
+            			document.getElementById('popup2').classList.add('show');
+            			generateSecondQuestion();
+						}
+			else {nextQuestion();}
+			}
+
+
+
+function answerSecond(choice) {
+    console.log('Second question answer:', choice);
+	attempts+=1;
+	document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+    if (choice === correctAnswer) {
+        console.log('Correct!');
+		score+=1;
+		document.getElementById("SScore").innerHTML = "Score: " + score;
+    } else {
+        console.log('Incorrect. Correct answer is:', correctAnswer);
+    }
+    document.getElementById('question2').style.display = 'none';
+    document.getElementById('question1').style.display = 'block';
+    }
+
+function generateSecondQuestion() {
+            const otherOptions = options.filter(option => option !== correctAnswer);
+            
+            const shuffledOthers = otherOptions.sort(() => 0.5 - Math.random());
+            const selectedOthers = shuffledOthers.slice(0, 3);
+            
+            const selected = [...selectedOthers, correctAnswer];
+            
+            const shuffledSelected = selected.sort(() => 0.5 - Math.random());
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            shuffledSelected.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => answerSecond(option);
+                optionsDiv.appendChild(button);
+            });
+        }
+
+        function answerFirst(choice) {
+            console.log('First question answer:', choice);
+			attempts+=1;
+			document.getElementById("AAttempts").innerHTML = "Attempts: " + attempts;
+			if (choice === correctAnswerTwo) {
+                console.log('Correct!');
+				score+=1;
+				document.getElementById("SScore").innerHTML = "Score: " + score;
+            } else {
+                console.log('Incorrect. Correct answer is:', correctAnswerTwo);
+            }
+			document.getElementById("mmmark").innerHTML = ""
+			nextQuestion();
+            document.getElementById('overlay').classList.remove('show');
+            document.getElementById('popup2').classList.remove('show');
+            document.getElementById('question1').style.display = 'none';
+            document.getElementById('question2').style.display = 'block';
+        }
+
+</script>
+
+<body>
+<center>
+<button id="startBtn" onclick="startGame()">START</button>
+<div id="timeDisplay">Time Left: 3:00</div>
+<div><b>Match the Element with another element to form a common compound<b></div>
+<div class="xwwrapper"><div class="xiitem red" id="xiiitem"><span class="xiinner"><span id="xmmmark" class="xmmark"></span></span>
+</span></div></div>
+<div><div id="SScore">Score: 0</div><div id="AAttempts">Attempts: 0</div></div>
+<div class="wwrapper"><div class="iitem ggreen"><span class="iinner"><span id="mmmark" class="mmark"></span></span></div></div>
+</center> 
+	<div class="wrapper">
+		<button id="angle1" class="item green" onclick="COneClick0()" disabled><span class="inner"><span class="mark">&nbsp;&nbsp;Cl&nbsp;&nbsp;</span></span></button>
+		<button id="angle2"  class="item green" onclick="COneClick30()" disabled><span class="inner"><span class="mark">&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;</span></span></button>
+		<button id="angle3"  class="item green" onclick="COneClick45()" disabled><span class="inner"><span class="mark">SO<sub>4</sub></span></span></button>
+		<button id="angle4"  class="item green" onclick="COneClick60()" disabled><span class="inner"><span class="mark">CO<sub>3</sub></span></span></button>
+		<button id="angle5"  class="item green" onclick="COneClick90()" disabled><span class="inner"><span class="mark">&nbsp;Cl<sub>2</sub>&nbsp;</span></span></button>
+		<button id="angle6"  class="item green" onclick="COneClick120()" disabled><span class="inner"><span class="mark">&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;</span></span></button>
+		<button id="angle7"  class="item green" onclick="COneClick135()" disabled><span class="inner"><span class="mark">NO<sub>3</sub></span></span></button>
+		<button id="angle8"  class="item green" onclick="COneClick150()" disabled><span class="inner"><span class="mark">&nbsp;O<sub>2</sub>&nbsp;</span></span></button>
+		<button id="angle9"  class="item green" onclick="COneClick180()" disabled><span class="inner"><span class="mark">&nbsp;H<sub>3</sub>&nbsp;</span></span></button>
+		<button id="angle10"  class="item green" onclick="COneClick210()" disabled><span class="inner"><span class="mark">&nbsp;H<sub>4</sub>&nbsp;</span></span></button>
+		<button id="angle11"  class="item green" onclick="COneClick225()" disabled><span class="inner"><span class="mark">&nbsp;Cl<sub>3</sub>&nbsp;</span></span></button>
+		<button id="angle12"  class="item green" onclick="COneClick240()" disabled><span class="inner"><span class="mark">H<sub>6</sub>O</span></span></button>
+		<button id="angle13"  class="item green" onclick="COneClick270()" disabled><span class="inner"><span class="mark">&nbsp;H<sub>6</sub>&nbsp;</span></span></button>
+		<button id="angle15"  class="item green" onclick="COneClick315()" disabled><span class="inner"><span class="mark">H<sub>2</sub>O</span></span></button>
+		<button id="angle16"  class="item green" onclick="COneClick330()" disabled><span class="inner"><span class="mark">&nbsp;OH&nbsp;</span></span></button>
+	</div>
+
+<div class="popup" id="ppopup">
+	<form class="popup-content" action="https://script.google.com/macros/s/AKfycby7yZQC8MT1-SkF9g4IErkeUrqzc1l9on3dwzwhhR25vLkrZYJVcB1lTfwLUwdU4Rl6/exec" method='post'>
+		<input required type="text" name="firstname" placeholder="First Name"><br><br>
+		<input required type="text" name="lastname" placeholder="Last Name"><br><br>
+		<input id="popdate" type="text" name="date" value="0" readonly><br><br>
+		<label>Score:</label><br><br>
+		<input id="popscore" type="text" name="score" value="0" readonly><br><br>
+		<label>Attempts:</label><br><br>
+		<input id="popattempt" type="text" name="attempt" value="0" readonly><br><br>
+		<input type="submit">
+	</div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="popup2" id="popup2">
+    <div class="question" id="question1" style="display: none;">
+        <p>What is the type of bonding for this compound?</p>
+        <button onclick="answerFirst('A')" class="button2">Ionic bonding</button>
+        <button onclick="answerFirst('B')" class="button2">Covalent bonding</button>
+    </div>
+    <div class="question" id="question2">
+        <p>What is the chemical name of the compound:</p><p id="compound"></p>
+        <div id="options"></div>
+    </div>
+</div>
+
+</body>
+
+</html>
